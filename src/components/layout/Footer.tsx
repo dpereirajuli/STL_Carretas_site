@@ -25,6 +25,9 @@ export function Footer() {
               Líder em soluções de transporte e reboque. Qualidade, inovação e segurança 
               em cada carretinha que produzimos há mais de 20 anos.
             </p>
+            <p className="text-primary-foreground/70 mb-6 max-w-sm">
+              CNPJ: 63.466.181.0001.66
+            </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <a
