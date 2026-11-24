@@ -15,7 +15,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Endereço",
-    lines: ["Av. Almeida Cunha, 394 C", "Marengo - Itaquaquecetuba/SP", "CEP: 08594-130"],
+    lines: ["Rua Dois, 302", "Pq. Residencial Souza Campos", "Itaquaquecetuba/SP"],
   },
   {
     icon: Clock,
@@ -71,7 +71,7 @@ const Contato = () => {
               {/* Map */}
               <div className="aspect-video bg-muted rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3659.165015502809!2d-46.30553312161692!3d-23.49056510443477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce7bc18d845cd3%3A0x245a909682f8fa57!2sAv.%20Almeida%20da%20Cunha%2C%20394%20-%20Parque%20Res.%20Marengo%2C%20Itaquaquecetuba%20-%20SP%2C%2008594-130!5e0!3m2!1spt-BR!2sbr!4v1765033725689!5m2!1spt-BR!2sbr"
+                  src="https://www.google.com/maps?q=Rua%20Dois%2C%20302%2C%20Parque%20Residencial%20Souza%20Campos%2C%20Itaquaquecetuba%20-%20SP&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

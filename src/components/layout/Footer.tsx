@@ -61,9 +61,9 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent mt-0.5" />
                 <p className="text-primary-foreground/70">
-                  Av. Almeida Cunha, 394 C<br />
-                  Marengo - Itaquaquecetuba/SP<br />
-                  CEP: 08594-130
+                  Rua Dois, 302<br />
+                  Pq. Residencial Souza Campos<br />
+                  Itaquaquecetuba/SP
                 </p>
               </li>
             </ul>
