@@ -64,6 +64,9 @@ export function FeaturedAccessories() {
 
                 <div className="flex items-center justify-between">
                   <div>
+                    {accessory.priceVariations.length > 0 && (
+                      <span className="block text-xs text-muted-foreground">A partir de</span>
+                    )}
                     <span className="font-display text-lg font-bold text-foreground">
                       R$ {formatPrice(accessory.price)}
                     </span>

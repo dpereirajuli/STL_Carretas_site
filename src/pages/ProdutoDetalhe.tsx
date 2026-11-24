@@ -236,7 +236,7 @@ const ProdutoConteudo = ({ product, accessories }: ProdutoConteudoProps) => {
               {priceVariations.length > 0 && (
                 <div className="mb-6">
                   <h3 className="font-display font-bold text-foreground mb-3">
-                    Opções de Preço
+                    Escolha a opção
                   </h3>
                   <div className="space-y-2">
                     {priceVariations.map((variation, index) => (

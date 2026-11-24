@@ -171,14 +171,14 @@ const Carrinho = () => {
                         <div className="flex items-center justify-between mt-4">
                           <div className="flex items-center gap-2">
                             <button
-                              onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                              onClick={() => updateQuantity(index, item.quantity - 1)}
                               className="w-8 h-8 flex items-center justify-center border border-border rounded hover:bg-muted transition-colors"
                             >
                               <Minus className="w-4 h-4" />
                             </button>
                             <span className="w-12 text-center font-medium">{item.quantity}</span>
                             <button
-                              onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                              onClick={() => updateQuantity(index, item.quantity + 1)}
                               className="w-8 h-8 flex items-center justify-center border border-border rounded hover:bg-muted transition-colors"
                             >
                               <Plus className="w-4 h-4" />
@@ -198,7 +198,7 @@ const Carrinho = () => {
 
                       {/* Remove Button */}
                       <button
-                        onClick={() => removeFromCart(item.id)}
+                        onClick={() => removeFromCart(index)}
                         className="text-destructive hover:text-destructive/80 transition-colors"
                         aria-label="Remover item"
                       >

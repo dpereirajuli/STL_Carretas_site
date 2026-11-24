@@ -43,12 +43,18 @@ interface ProductRow {
 const COLUMNS =
   "codigo,nome,descricao,resumo,valor,categoria,imagens,destaques,especificacoes,caracteristicas,variacoes_preco,acessorios,destaque_home,promocao_home";
 
+// Com variações, o preço exibido é o da mais barata ("A partir de").
+const basePrice = (row: ProductRow) =>
+  row.variacoes_preco.length > 0
+    ? Math.min(...row.variacoes_preco.map((v) => Number(v.valor)))
+    : Number(row.valor);
+
 const fromRow = (row: ProductRow): Product => ({
   id: row.codigo,
   name: row.nome,
   description: row.descricao,
   summary: row.resumo,
-  price: Number(row.valor),
+  price: basePrice(row),
   category: row.categoria,
   images: row.imagens.length > 0 ? row.imagens : ["/placeholder.svg"],
   highlights: row.destaques,
