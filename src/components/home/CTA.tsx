@@ -6,7 +6,7 @@ export function CTA() {
   return (
     <section className="section-padding bg-muted">
       <div className="container-custom">
-        <div className="relative bg-gradient-to-br from-accent to-orange-dark rounded-3xl overflow-hidden">
+        <div className="relative bg-gradient-to-br from-accent to-brand-dark rounded-3xl overflow-hidden">
           {/* Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{

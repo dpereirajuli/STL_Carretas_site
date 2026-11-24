@@ -17,8 +17,8 @@ export function Footer() {
             <Link to="/" className="flex items-center gap-2 mb-6">
               <img 
                 src={logo} 
-                alt="STL Carretas" 
-                className="h-10 md:h-12 w-auto object-contain"
+                alt="STL Carretas Reboques" 
+                className="h-24 md:h-28 w-auto object-contain"
               />
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">

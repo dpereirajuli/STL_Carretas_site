@@ -32,8 +32,8 @@ export function Header() {
         <Link to="/" className="flex items-center gap-2">
           <img 
             src={logo} 
-            alt="STL Carretas" 
-            className="h-10 md:h-12 w-auto object-contain"
+            alt="STL Carretas Reboques" 
+            className="h-14 md:h-16 w-auto object-contain"
           />
         </Link>
 
