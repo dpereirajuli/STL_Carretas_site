@@ -1,52 +1,16 @@
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import guinchoManual from "@/assets/guincho_manual.jpeg";
-import guinchoEletrico from "@/assets/guincho_eletrico.jpeg";
-import cinta from "@/assets/cinta.jpeg";
-import corrente from "@/assets/corrente.jpeg";
-
-const accessories = [
-  {
-    id: 13,
-    name: "Guincho Manual",
-    category: "acessorios",
-    price: 300,
-    image: guinchoManual,
-    rating: 5,
-    reviews: 0,
-  },
-  {
-    id: 14,
-    name: "Guincho Elétrico 1361 Kg 12 Volts",
-    category: "acessorios",
-    price: 700,
-    image: guinchoEletrico,
-    rating: 5,
-    reviews: 0,
-  },
-  {
-    id: 15,
-    name: "Cinta catraca (o par)",
-    category: "acessorios",
-    price: 160,
-    image: cinta,
-    rating: 5,
-    reviews: 0,
-  },
-  {
-    id: 16,
-    name: "Corrente com cadeado",
-    category: "acessorios",
-    price: 90,
-    image: corrente,
-    rating: 5,
-    reviews: 0,
-  },
-];
+import { useProducts } from "@/hooks/use-products";
+import { ProductsStatus } from "@/components/ProductsStatus";
+import { formatPrice } from "@/services/products";
 
 export function FeaturedAccessories() {
+  const { data = [], isLoading, isError, refetch } = useProducts();
+  const accessories = data.filter((p) => p.featured && p.category === "acessorios");
+
+  if (!isLoading && !isError && accessories.length === 0) return null;
+
   return (
     <section className="section-padding bg-background">
       <div className="container-custom">
@@ -67,6 +31,8 @@ export function FeaturedAccessories() {
           </Link>
         </div>
 
+        <ProductsStatus isLoading={isLoading} isError={isError} onRetry={refetch} />
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {accessories.map((accessory, index) => (
             <div
@@ -77,15 +43,10 @@ export function FeaturedAccessories() {
               {/* Image */}
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src={accessory.image}
+                  src={accessory.images[0]}
                   alt={accessory.name}
                   className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 bg-muted"
                 />
-                {accessory.badge && (
-                  <span className="absolute top-3 left-3 px-3 py-1 bg-accent text-accent-foreground text-xs font-bold rounded-full">
-                    {accessory.badge}
-                  </span>
-                )}
               </div>
 
               {/* Content */}
@@ -103,13 +64,8 @@ export function FeaturedAccessories() {
 
                 <div className="flex items-center justify-between">
                   <div>
-                    {accessory.originalPrice && (
-                      <span className="text-xs text-muted-foreground line-through mr-2">
-                        R$ {accessory.originalPrice.toLocaleString()}
-                      </span>
-                    )}
                     <span className="font-display text-lg font-bold text-foreground">
-                      R$ {accessory.price.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                      R$ {formatPrice(accessory.price)}
                     </span>
                   </div>
                   <Link to={`/produtos/${accessory.category}/${accessory.id}`}>
