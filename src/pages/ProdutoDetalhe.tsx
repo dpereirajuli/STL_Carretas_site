@@ -226,6 +226,17 @@ const ProdutoConteudo = ({ product, accessories }: ProdutoConteudoProps) => {
 
               <p className="text-muted-foreground mb-6">{product.description}</p>
 
+              {product.highlights.length > 0 && (
+                <ul className="space-y-2 mb-6">
+                  {product.highlights.map((highlight, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-foreground">
+                      <span className="w-1.5 h-1.5 bg-accent rounded-full flex-shrink-0" />
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              )}
+
               <div className="flex items-baseline gap-3 mb-6">
                 <span className="font-display text-4xl font-bold text-foreground">
                   R$ {formatPrice(currentPrice)}
@@ -346,8 +357,8 @@ const ProdutoConteudo = ({ product, accessories }: ProdutoConteudoProps) => {
                 Especificações Técnicas
               </h3>
               <div className="space-y-3">
-                {product.specs.map((spec) => (
-                  <div key={spec.label} className="flex justify-between py-2 border-b border-border last:border-0">
+                {product.specs.map((spec, i) => (
+                  <div key={i} className="flex justify-between py-2 border-b border-border last:border-0">
                     <span className="text-muted-foreground">{spec.label}</span>
                     <span className="font-medium text-foreground">{spec.value}</span>
                   </div>
@@ -360,8 +371,8 @@ const ProdutoConteudo = ({ product, accessories }: ProdutoConteudoProps) => {
                 Características
               </h3>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {product.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-foreground">
+                {product.features.map((feature, i) => (
+                  <li key={i} className="flex items-center gap-2 text-foreground">
                     <Check className="w-5 h-5 text-accent flex-shrink-0" />
                     {feature}
                   </li>

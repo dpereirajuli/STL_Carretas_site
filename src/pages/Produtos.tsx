@@ -249,8 +249,8 @@ const Produtos = () => {
                   </h3>
 
                   <ul className="space-y-1 mb-4">
-                    {product.highlights.slice(0, 2).map((spec) => (
-                      <li key={spec} className="text-xs text-muted-foreground flex items-center gap-1.5">
+                    {product.highlights.slice(0, 2).map((spec, i) => (
+                      <li key={i} className="text-xs text-muted-foreground flex items-center gap-1.5">
                         <span className="w-1 h-1 bg-accent rounded-full" />
                         {spec}
                       </li>

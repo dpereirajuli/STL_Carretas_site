@@ -47,8 +47,8 @@ export function Categories() {
                   {product.description}
                 </p>
                 <ul className="space-y-2 mb-4">
-                  {product.highlights.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2 text-sm text-foreground/80">
+                  {product.highlights.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-foreground/80">
                       <span className="w-1.5 h-1.5 bg-accent rounded-full" />
                       {feature}
                     </li>
