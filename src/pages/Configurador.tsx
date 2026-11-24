@@ -3,16 +3,18 @@ import { Layout } from "@/components/layout/Layout";
 import { Check, ChevronRight, RotateCcw, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useProducts } from "@/hooks/use-products";
+import { ProductsStatus } from "@/components/ProductsStatus";
 import carretaPrancha from "@/assets/carreta_prancha.jpeg";
 import plataforma from "@/assets/Plataforma.jpeg";
 import carretinha from "@/assets/carretinha.jpeg";
 
 const steps = ["Modelo Base", "Configuração", "Acessórios", "Resumo"];
 
-const models = [
-  { id: "guincho", name: "Plataforma guincho", price: 15000, image: plataforma, desc: "Transporte de veículos" },
-  { id: "carga", name: "Carretinha prancha", price: 3900, image: carretaPrancha, desc: "Transporte de materiais" },
-  { id: "multiuso", name: "ASA DELTA PARA 1 CARRO E 1 MOTO", price: 4500, image: carretinha, desc: "Uso versátil" },
+const baseModels = [
+  { id: "guincho", codigo: 9, image: plataforma, desc: "Transporte de veículos" },
+  { id: "carga", codigo: 7, image: carretaPrancha, desc: "Transporte de materiais" },
+  { id: "multiuso", codigo: 10, image: carretinha, desc: "Uso versátil" },
 ];
 
 const configurations = {
@@ -46,6 +48,12 @@ const accessories = [
 ];
 
 const Configurador = () => {
+  const { data: products = [], isLoading, isError, refetch } = useProducts();
+  // Nome e preço do modelo base vêm do catálogo
+  const models = baseModels.flatMap(({ codigo, ...base }) => {
+    const product = products.find((p) => p.id === codigo);
+    return product ? [{ ...base, name: product.name, price: product.price }] : [];
+  });
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedModel, setSelectedModel] = useState<string | null>(null);
   const [config, setConfig] = useState({
@@ -142,6 +150,7 @@ const Configurador = () => {
                   <h2 className="font-display text-2xl font-bold text-foreground mb-6">
                     Escolha o Modelo Base
                   </h2>
+                  <ProductsStatus isLoading={isLoading} isError={isError} onRetry={refetch} />
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {models.map((m) => (
                       <button
